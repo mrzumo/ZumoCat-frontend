@@ -8,7 +8,7 @@
         <h1 class="font-bold text-2xl align-left mr-auto p-2">cat</h1>
         <div class="flex pl-2 pb-2">
             <Tag name="cute"></Tag>
-            <p class="pl-1"/>
+            <div class="pl-1"/>
             <Tag name="eating"></Tag>
         </div>
     </div>
