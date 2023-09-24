@@ -1,12 +1,12 @@
 <script>
-    import Card from './card.svelte';
+    import Card from '../card.svelte';
 </script>
 
 <div class="flex flex-col justify-center text-center min-h-screen">
-    <h1 class="text-2xl font-bold text-primary p-2">zumo.cat</h1>
+    <h1 class="text-2xl font-bold text-primary p-2">rofl.cat</h1>
     <div class="container m-auto grid justify-items-center gap-8 grid-cols-1 md:grid-cols-2">
-            <Card image="cat" tag1="cute" tag2="eating"></Card>
-            <Card image="cat" tag1="cute" tag2="eating"></Card>
+        <Card image="rofl1" tag1="acrobat" tag2="staring"></Card>
+        <Card image="rofl2" tag1="ominous" tag2="staring"></Card>
     </div>
     <div class="py-4"/>
     <footer class="footer footer-center p-4 bg-secondary-content text-base-content">
