@@ -18,7 +18,7 @@
 
   <div class="flex flex-col justify-items-center p-5">
     <h1 class="p-5 text-2xl font-bold text-primary">random cat</h1>
-    <div class="max-h-sm phone-1 ml-auto mr-auto md:w-1/5 w-3/5 rounded-2xl bg-secondary-content">
+    <div class="max-h-sm phone-1 ml-auto mr-auto md:w-2/5 lg:w-1/5  w-3/5 rounded-2xl bg-secondary-content">
       <div class="flex flex-col">
         <img src="https://api.zumo.cat/zumocat" class="pointer-events-none rounded-t-lg align-top" alt="zumocat" id="img" />
         <h1 class="p-2 text-center text-2xl font-bold">cat</h1>
