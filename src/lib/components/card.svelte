@@ -1,19 +1,19 @@
 <script lang="ts">
-    import Tag from "$lib/components/hash.svelte";
+  import Tag from '$lib/components/hash.svelte';
 
-    export let image: string;
-    export let tag1: string;
-    export let tag2: string;
+  export let image: string;
+  export let tag1: string;
+  export let tag2: string;
 </script>
 
-<div class="phone-1 bg-secondary-content rounded-2xl w-3/5 max-h-sm">
-    <div class="flex flex-col">
-        <img src="/images/cats/{image}.png" class="rounded-t-lg align-top pointer-events-none " alt="zumocat">
-        <h1 class="font-bold text-2xl align-left mr-auto p-2">cat</h1>
-        <div class="flex pl-2 pb-2">
-            <Tag name="{tag1}"></Tag>
-            <div class="pl-1"/>
-            <Tag name="{tag2}"></Tag>
-        </div>
+<div class="max-h-sm phone-1 w-3/5 rounded-2xl bg-secondary-content">
+  <div class="flex flex-col">
+    <img src="/images/cats/{image}.png" class="pointer-events-none rounded-t-lg align-top" alt="zumocat" />
+    <h1 class="align-left mr-auto p-2 text-2xl font-bold">cat</h1>
+    <div class="flex pb-2 pl-2">
+      <Tag name={tag1}></Tag>
+      <div class="pl-1" />
+      <Tag name={tag2}></Tag>
     </div>
+  </div>
 </div>

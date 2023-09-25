@@ -1,1 +1,1 @@
-<p class="text-base-content font-bold text-xl p-2">puto Puigdemont i puta generalitat la independència em quedi menjar els ous</p>
+<p class="p-2 text-xl font-bold text-base-content">puto Puigdemont i puta generalitat la independència em quedi menjar els ous</p>
