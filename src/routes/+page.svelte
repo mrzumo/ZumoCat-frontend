@@ -33,6 +33,7 @@
   <footer class="footer footer-center bg-secondary-content p-4 text-base-content">
     <aside>
       <a href="/credits" class="text-xl font-bold">credits</a>
+      <p>you are NOT approved to use these images commercially and you cannot profit from them</p>
     </aside>
   </footer>
 </div>
