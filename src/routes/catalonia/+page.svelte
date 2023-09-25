@@ -1,2 +1,1 @@
-<h1 class="text-2xl font-bold text-primary p-2">here u go catalonian govt</h1>
 <p class="text-base-content font-bold text-xl p-2">puto Puigdemont i puta generalitat la independència em quedi menjar els ous</p>
