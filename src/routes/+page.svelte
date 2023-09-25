@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
   import Card from '$lib/components/card.svelte';
 
   function ref() {
-    const img = document.getElementById('img');
+    const img = document.getElementById('img') as HTMLImageElement;
     if (img) {
       img.src = img.src + `?rand=${Math.random()}`;
     }
