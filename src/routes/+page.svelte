@@ -1,20 +1,22 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount } from 'svelte';
+  import LoadingCard from '$lib/components/cardLoading.svelte';
   import Card from '$lib/components/card.svelte';
-  import Tag from "$lib/components/hash.svelte"
-  import axios from "axios";
+  import Tag from '$lib/components/hash.svelte';
+  import axios from 'axios';
+  import type { PageData } from './$types';
 
+  export let data: PageData;
   interface image {
-    title:       string;
+    title: string;
     description: string;
-    tags:        string[];
-    url:         string;
+    tags: string[];
+    url: string;
   }
 
-
   onMount(() => {
-    refresh()
-  })
+    refresh();
+  });
 
   let image: HTMLImageElement;
   var tagss: string[];
@@ -23,26 +25,34 @@
   function refresh() {
     let config = {
       headers: {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': '*'
       }
-    }
+    };
 
-    axios.get('https://api.zumo.cat/random')
-            .then(function (response) {
-              const parsed: image = response.data;
-              image.src = parsed.url
-              tagss = parsed.tags
-              title = parsed.title
-              desc = parsed.description
-            })
+    axios.get('https://api.zumo.cat/random').then(function (response) {
+      const parsed: image = response.data;
+      image.src = parsed.url;
+      tagss = parsed.tags;
+      title = parsed.title;
+      desc = parsed.description;
+    });
   }
 </script>
 
 <div class="flex min-h-screen flex-col justify-center text-center">
   <h1 class="p-2 text-2xl font-bold text-primary">cat feed</h1>
   <div class="container m-auto grid grid-cols-1 justify-items-center gap-8 md:grid-cols-2">
-    <Card image="cat" tag1="cute" tag2="eating"></Card>
-    <Card image="cat" tag1="cute" tag2="eating"></Card>
+    {#await data.streamed.cats}
+      {#each Array(10) as _}
+        <LoadingCard />
+      {/each}
+    {:then cats}
+      {#each cats as cat}
+        <Card image={cat.url} tag1={cat.tags[0]} tag2={cat.tags[1]}></Card>
+      {/each}
+    {:catch error}
+      <p class="text-red-500">{error.message}</p>
+    {/await}
   </div>
 
   <div class="flex flex-col justify-items-center p-5">
@@ -66,10 +76,10 @@
           {/if}
         </div>
       </div>
-    <div class="ml-auto mr-auto p-5">
-      <button on:click={refresh} class="btn btn-circle btn-primary">🐱</button>
+      <div class="ml-auto mr-auto p-5">
+        <button on:click={refresh} class="btn btn-circle btn-primary">🐱</button>
+      </div>
     </div>
-  </div>
   </div>
 
   <div class="py-4" />
