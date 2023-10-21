@@ -10,4 +10,4 @@ https://api.zumo.cat/zumocat
 It was also made in SvelteKit and with TailwindCSS.
 
 # Contributors
-You can find the list of contributors [here](https://dev.zumo.cat/credits).
+You can find the list of contributors [here](https://zumo.cat/credits).
