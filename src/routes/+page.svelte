@@ -50,7 +50,7 @@
     {/await}
   </div>
 
-  <div on:load={() => refresh()} class="flex flex-col justify-items-center p-5">
+  <div on:load={refresh} class="flex flex-col justify-items-center p-5">
     <h1 class="p-5 text-2xl font-bold text-primary">random cat</h1>
     <div class="max-h-sm phone-1 ml-auto mr-auto w-1/5 rounded-2xl bg-secondary-content">
       <div class="flex flex-col">

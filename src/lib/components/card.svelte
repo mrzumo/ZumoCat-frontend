@@ -9,7 +9,9 @@
 
 <div class="max-h-sm phone-1 w-3/5 rounded-2xl bg-secondary-content">
   <div class="flex flex-col">
-    <img src={image} class="pointer-events-none rounded-t-lg align-top" alt="zumocat" />
+    <div class="relative h-96 w-full overflow-hidden">
+      <img src={image} class="pointer-events-none h-full w-full rounded-t-lg object-cover object-center" alt="zumocat" />
+    </div>
     <h1 class="mr-auto w-full p-2 text-center text-2xl font-bold capitalize">{title}</h1>
     <div class="flex pb-2 pl-2">
       {#if tag1}
