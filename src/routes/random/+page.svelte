@@ -1,19 +1,17 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import axios from "axios";
-  import Tag from "$lib/components/hash.svelte"
+  import { onMount } from 'svelte';
+  import Tag from '$lib/components/hash.svelte';
 
   interface image {
-    title:       string;
+    title: string;
     description: string;
-    tags:        string[];
-    url:         string;
+    tags: string[];
+    url: string;
   }
 
-
   onMount(() => {
-    refresh()
-  })
+    refresh();
+  });
 
   let image: HTMLImageElement;
   var tagss: string[];
@@ -23,23 +21,23 @@
   function refresh() {
     let config = {
       headers: {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': '*'
       }
-    }
+    };
 
-    axios.get('https://api.zumo.cat/random')
-            .then(function (response) {
-              const parsed: image = response.data;
-              image.src = parsed.url
-              tagss = parsed.tags
-              title = parsed.title
-              desc = parsed.description
-            })
+    fetch('https://api.zumo.cat/random', config)
+      .then((response) => response.json())
+      .then((data) => {
+        image.src = data.url;
+        tagss = data.tags;
+        title = data.title;
+        desc = data.description;
+      });
   }
 </script>
 
 <div class="flex flex-col justify-items-center p-5">
-  <div class="max-h-sm phone-1 ml-auto mr-auto w-1/5 rounded-2xl bg-secondary-content scale-110">
+  <div class="max-h-sm phone-1 ml-auto mr-auto w-1/5 scale-110 rounded-2xl bg-secondary-content">
     <div class="flex flex-col">
       <img class="pointer-events-none rounded-t-lg align-top" alt="zumocat" id="image" bind:this={image} />
       {#if title}

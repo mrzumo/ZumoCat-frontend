@@ -1,46 +1,41 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import LoadingCard from '$lib/components/cardLoading.svelte';
   import Card from '$lib/components/card.svelte';
+  import LoadingCard from '$lib/components/cardLoading.svelte';
   import Tag from '$lib/components/hash.svelte';
-  import axios from 'axios';
+  import { onMount } from 'svelte';
   import type { PageData } from './$types';
 
   export let data: PageData;
-  interface image {
-    title: string;
-    description: string;
-    tags: string[];
-    url: string;
-  }
-
-  onMount(() => {
-    refresh();
-  });
 
   let image: HTMLImageElement;
-  var tagss: string[];
-  var title: string;
-  var desc: string;
+  let tags: string[];
+  let title: string;
+  let desc: string;
+
   function refresh() {
-    let config = {
+    const config = {
       headers: {
         'Access-Control-Allow-Origin': '*'
       }
     };
 
-    axios.get('https://api.zumo.cat/random').then(function (response) {
-      const parsed: image = response.data;
-      image.src = parsed.url;
-      tagss = parsed.tags;
-      title = parsed.title;
-      desc = parsed.description;
-    });
+    fetch('https://api.zumo.cat/random', config)
+      .then((response) => response.json())
+      .then((data) => {
+        image.src = data.url;
+        tags = data.tags;
+        title = data.title;
+        desc = data.description;
+      });
   }
+
+  onMount(() => {
+    refresh();
+  });
 </script>
 
 <div class="flex min-h-screen flex-col justify-center text-center">
-  <h1 class="p-2 text-2xl font-bold text-primary">cat feed</h1>
+  <h1 class="p-2 text-2xl font-bold text-primary">Cat Feed</h1>
   <div class="container m-auto grid grid-cols-1 justify-items-center gap-8 md:grid-cols-2">
     {#await data.streamed.cats}
       {#each Array(10) as _}
@@ -48,14 +43,14 @@
       {/each}
     {:then cats}
       {#each cats as cat}
-        <Card image={cat.url} tag1={cat.tags[0]} tag2={cat.tags[1]}></Card>
+        <Card image={cat.url} tag1={cat.tags[0]} tag2={cat.tags[1]} title={cat.title} />
       {/each}
     {:catch error}
       <p class="text-red-500">{error.message}</p>
     {/await}
   </div>
 
-  <div class="flex flex-col justify-items-center p-5">
+  <div on:load={() => refresh()} class="flex flex-col justify-items-center p-5">
     <h1 class="p-5 text-2xl font-bold text-primary">random cat</h1>
     <div class="max-h-sm phone-1 ml-auto mr-auto w-1/5 rounded-2xl bg-secondary-content">
       <div class="flex flex-col">
@@ -69,9 +64,9 @@
           <h1 class="pb-2 text-center text-xl">{desc}</h1>
         {/if}
         <div class="flex pb-2 pl-2">
-          {#if tagss}
-            {#each tagss as tagg}
-              <Tag name={tagg}></Tag>
+          {#if tags}
+            {#each tags as tag}
+              <Tag name={tag}></Tag>
             {/each}
           {/if}
         </div>
