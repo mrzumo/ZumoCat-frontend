@@ -43,7 +43,7 @@
       {/each}
     {:then cats}
       {#each cats as cat}
-        <Card image={cat.url} tag1={cat.tags[0]} tag2={cat.tags[1]} title={cat.title} />
+        <Card image={cat.url} tags={cat.tags.join(",")}></Card>
       {/each}
     {:catch error}
       <p class="text-red-500">{error.message}</p>
