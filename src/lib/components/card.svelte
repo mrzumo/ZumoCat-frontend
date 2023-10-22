@@ -7,7 +7,7 @@
   export let title: string;
 </script>
 
-<div class="max-h-sm phone-1 w-3/5 rounded-2xl bg-secondary-content">
+<div class="max-h-sm phone-1 w-3/5 rounded-2xl bg-zinc-800">
   <div class="flex flex-col">
     <div class="relative h-96 w-full overflow-hidden">
       <img src={image} class="pointer-events-none h-full w-full rounded-t-lg object-cover object-center" alt="zumocat" />

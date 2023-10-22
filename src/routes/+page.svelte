@@ -35,7 +35,7 @@
 </script>
 
 <div class="flex min-h-screen flex-col justify-center text-center">
-  <h1 class="p-2 text-2xl font-bold text-primary">Cat Feed</h1>
+  <h1 class="text-primary p-2 text-2xl font-bold">Cat Feed</h1>
   <div class="container m-auto grid grid-cols-1 justify-items-center gap-8 md:grid-cols-2">
     {#await data.streamed.cats}
       {#each Array(10) as _}
@@ -51,8 +51,8 @@
   </div>
 
   <div on:load={refresh} class="flex flex-col justify-items-center p-5">
-    <h1 class="p-5 text-2xl font-bold text-primary">random cat</h1>
-    <div class="max-h-sm phone-1 ml-auto mr-auto w-1/5 rounded-2xl bg-secondary-content">
+    <h1 class="text-primary p-5 text-2xl font-bold">random cat</h1>
+    <div class="ml-auto mr-auto w-1/5 rounded-2xl bg-zinc-800 pb-4">
       <div class="flex flex-col">
         <img class="pointer-events-none rounded-t-lg align-top" alt="zumocat" id="image" bind:this={image} />
         {#if title}
@@ -71,14 +71,14 @@
           {/if}
         </div>
       </div>
-      <div class="ml-auto mr-auto p-5">
-        <button on:click={refresh} class="btn btn-circle btn-primary">🐱</button>
+      <div class="flex w-full justify-center">
+        <button on:click={refresh} class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 p-6">🐱</button>
       </div>
     </div>
   </div>
 
   <div class="py-4" />
-  <footer class="footer footer-center bg-secondary-content p-4 text-base-content">
+  <footer class="footer footer-center p-4">
     <aside>
       <a href="/credits" class="text-xl font-bold">credits</a>
       <p>you are NOT approved to use these images commercially and you cannot profit from them</p>
